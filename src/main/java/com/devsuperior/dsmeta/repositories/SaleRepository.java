@@ -11,8 +11,9 @@ import java.util.List;
 
 public interface SaleRepository extends JpaRepository<Sale, Long> {
 
-    @Query(value = "SELECT obj FROM Sale obj JOIN FETCH obj.seller ",
+    @Query(value = "SELECT obj FROM Sale obj JOIN FETCH obj.seller " +
+            "WHERE UPPER(obj.seller.name) LIKE UPPER(CONCAT('%', :name, '%')) ",
             countQuery = "SELECT COUNT(obj) FROM Sale obj JOIN obj.seller")
-    Page<Sale> searchAll(Pageable pageable);
+    Page<Sale> searchAll(String name, Pageable pageable);
 
 }

@@ -27,8 +27,8 @@ public class SaleService {
 		return new SaleMinDTO(entity);
 	}
 
-	public Page<SaleMinDTO> searchAll(Pageable pageable) {
-		Page<SaleMinDTO> page = repository.searchAll(pageable).map(SaleMinDTO::new);
+	public Page<SaleMinDTO> searchAll(String name, Pageable pageable) {
+		Page<SaleMinDTO> page = repository.searchAll(name, pageable).map(SaleMinDTO::new);
 		return page;
 	}
 
