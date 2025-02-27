@@ -1,6 +1,7 @@
 package com.devsuperior.dsmeta.controllers;
 
 import com.devsuperior.dsmeta.dto.SaleMinDTO;
+import com.devsuperior.dsmeta.dto.SaleSellerDTO;
 import com.devsuperior.dsmeta.services.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,12 +25,12 @@ public class SaleController {
 	}
 
 	@GetMapping(value = "/report")
-	public ResponseEntity<Page<SaleMinDTO>> getReport(
+	public ResponseEntity<Page<SaleSellerDTO>> getReport(
 			@RequestParam(name= "minDate", defaultValue = "") String minDate,
 			@RequestParam(name= "maxDate", defaultValue = "") String maxDate,
 			@RequestParam(name= "name", defaultValue = "") String name,
 			Pageable pageable) throws ParseException {
-		Page<SaleMinDTO> result = service.searchAll(minDate, maxDate, name, pageable);
+		Page<SaleSellerDTO> result = service.searchReport(minDate, maxDate, name, pageable);
 		return ResponseEntity.ok(result);
 	}
 
