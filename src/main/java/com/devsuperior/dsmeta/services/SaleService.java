@@ -48,7 +48,7 @@ public class SaleService {
 		LocalDate min = "".equals(minDate) ? max.minusYears(1L)
 				: LocalDate.parse(minDate);
 
-		Page<SummarySellerDTO> page = repository.searchSummary(min, max, pageable).map(SummarySellerDTO::new);
+		Page<SummarySellerDTO> page = repository.searchSummary(min, max, pageable);
 
 		return page;
 	}
